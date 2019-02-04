@@ -1,15 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { doArchiveStory } from '../actions/archive';
+import { getReadableStories } from '../selectors/story';
 import './App.css';
 
 import Stories from './Stories'
 
-const App = ({ stories, onArchive }) => (
+const App = () => (
   <div className="app">
-    <Stories 
-    stories={stories}
-    onArchive={onArchive}
-    />
+    <Stories />
   </div>
 );
 
-export default App;
+
+const mapStateToProps = state => ({
+  stories: getReadableStories(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  onArchive: id => dispatch(doArchiveStory(id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Stories);
