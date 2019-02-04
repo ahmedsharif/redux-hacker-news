@@ -4,10 +4,13 @@ import { doArchiveStory } from '../actions/archive';
 import { getReadableStories } from '../selectors/story';
 import './App.css';
 
-import Stories from './Stories'
+import Stories from './Stories';
 
 const App = () => (
   <div className="app">
+    {/* <div className="interactions">
+      <SearchStories />
+    </div> */}
     <Stories />
   </div>
 );
